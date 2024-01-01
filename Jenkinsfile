@@ -13,7 +13,7 @@ pipeline {
       steps {
         withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME') {
           bat 'mvn clean'
-          bat(script: 'mvn sonar:sonar', label: 'Unit testing and Code Coverage')
+          bat(script: 'mvn sonar:sonar install', label: 'Unit testing and Code Coverage')
           cobertura(autoUpdateHealth: true, autoUpdateStability: true, classCoverageTargets: 'target\\cobertura', coberturaReportFile: 'target\\cobertura\\*', failUnstable: true)
         }
 

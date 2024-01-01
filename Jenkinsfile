@@ -1,30 +1,13 @@
 pipeline {
-  agent {
-    node {
-      label 'main'
-    }
-
-  }
+  agent none
   stages {
     stage('PreBuild') {
-      agent {
-        node {
-          label 'main'
-        }
-
-      }
       steps {
         echo 'Pre-Build Message~'
       }
     }
 
     stage('Continuous Integration') {
-      agent {
-        node {
-          label 'main'
-        }
-
-      }
       steps {
         withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME') {
           bat 'mvn clean'

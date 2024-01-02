@@ -18,9 +18,9 @@ pipeline {
           cobertura(autoUpdateHealth: true, autoUpdateStability: true, classCoverageTargets: 'target\\cobertura', coberturaReportFile: 'target\\cobertura\\*', failUnstable: true)
           withSonarQubeEnv(installationName: 'SonarQube-Server', credentialsId: 'SonarQubeToken') {
             bat(label: 'SonarQube Analysis', script: 'C:\\workspace\\progm\\sonar-scanner-5.0.1.3006-windows\\bin\\sonar-scanner.bat -Dproject-settings=sonar-project.properties')
-            waitForQualityGate(abortPipeline: true, credentialsId: 'SonarQubeToken', webhookSecretId: 'SonarQubeWebhook')
           }
 
+          waitForQualityGate(abortPipeline: true, credentialsId: 'SonarQubeToken', webhookSecretId: 'SonarQubeWebhook')
         }
 
       }

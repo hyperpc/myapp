@@ -17,7 +17,14 @@
 		<java.version>17</java.version>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<!-- 
+			Property <sonar.jacoco.reportPath> is deprecated(JaCoCo binary format).
+			<sonar.coverage.jacoco.xmlReportPaths> shoule be used instead(JaCoCo XML format).
+		-->
+		<!-- 
 		<sonar.jacoco.reportPath>${project.build.directory}\jacoco.exec</sonar.jacoco.reportPath>
+		-->
+		<sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}\jacoco.exec</sonar.coverage.jacoco.xmlReportPaths>
 		<sonar.language>java</sonar.language>
 		<sonar.sources>src/main/java/</sonar.sources>
 		<sonar.java.binaries>${project.build.directory}\classes</sonar.java.binaries>

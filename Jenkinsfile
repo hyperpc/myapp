@@ -17,13 +17,13 @@ pipeline {
           bat(script: 'mvn test', label: 'Test the compiled file')
           bat(script: 'mvn sonar:sonar install', label: 'Unit testing and Code Coverage')
           cobertura(autoUpdateHealth: true, autoUpdateStability: true, classCoverageTargets: 'target\\cobertura', coberturaReportFile: 'target\\cobertura\\*', failUnstable: true)
-          withSonarQubeEnv(installationName: 'SonarQube-Server', credentialsId: 'SonarQubeToken') {
-            bat(label: 'SonarQube Analysis', script: 'C:\\workspace\\progm\\sonar-scanner-5.0.1.3006-windows\\bin\\sonar-scanner.bat -Dproject-settings=sonar-project.properties')
-            waitForQualityGate(abortPipeline: true, credentialsId: 'SonarQubeToken', webhookSecretId: 'SonarQubeWebhook')
-          }
-
         }
 
+        withSonarQubeEnv(installationName: 'SonarQube-Server', credentialsId: 'SonarQubeToken') {
+          bat(label: 'SonarQube Analysis', script: 'C:\\workspace\\progm\\sonar-scanner-5.0.1.3006-windows\\bin\\sonar-scanner.bat -Dproject-settings=sonar-project.properties')
+        }
+
+        waitForQualityGate(abortPipeline: true, credentialsId: 'SonarQubeToken', webhookSecretId: 'SonarQubeWebhook')
       }
     }
 

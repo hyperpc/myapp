@@ -23,6 +23,11 @@ pipeline {
           bat(label: 'SonarQube Analysis', script: 'C:\\workspace\\progm\\sonar-scanner-5.0.1.3006-windows\\bin\\sonar-scanner.bat -Dproject-settings=sonar-project.properties')
         }
 
+      }
+    }
+
+    stage('Quality Gate') {
+      steps {
         waitForQualityGate(abortPipeline: true, credentialsId: 'SonarQubeToken', webhookSecretId: 'SonarQubeWebhook')
       }
     }

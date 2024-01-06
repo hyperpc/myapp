@@ -23,12 +23,11 @@ pipeline {
           bat(label: 'SonarQube Analysis', script: 'C:\\workspace\\progm\\sonar-scanner-5.0.1.3006-windows\\bin\\sonar-scanner.bat -Dproject-settings=sonar-project.properties')
         }
 
-      }
-    }
+        waitForQualityGate(credentialsId: 'SonarQubeToken', webhookSecretId: 'SonarQubeWebhook', abortPipeline: true)
+        withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME', publisherStrategy: 'IMPLICIT') {
+          bat(script: 'mvn package -Dmaven.clean.skip=true -Dmaven.test.skip=true', label: 'Snapshot War Packing')
+        }
 
-    stage('Quality Gate') {
-      steps {
-        waitForQualityGate(abortPipeline: true, credentialsId: 'SonarQubeToken', webhookSecretId: 'SonarQubeWebhook')
       }
     }
 

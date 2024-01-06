@@ -28,7 +28,7 @@ pipeline {
           bat(script: 'mvn package -Dmaven.clean.skip=true -Dmaven.test.skip=true', label: 'Snapshot War Packing')
         }
 
-        archiveArtifacts(artifacts: 'target/**/*.war', fingerprint: true, onlyIfSuccessful: true)
+        archiveArtifacts(artifacts: 'target/*.war', fingerprint: true, onlyIfSuccessful: true)
       }
     }
 

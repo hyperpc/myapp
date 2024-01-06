@@ -26,9 +26,9 @@ pipeline {
         waitForQualityGate(credentialsId: 'SonarQubeToken', webhookSecretId: 'SonarQubeWebhook', abortPipeline: true)
         withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME', publisherStrategy: 'IMPLICIT') {
           bat(script: 'mvn package -Dmaven.clean.skip=true -Dmaven.test.skip=true', label: 'Snapshot War Packing')
-          archiveArtifacts(artifacts: 'target/**/*.war', fingerprint: true, onlyIfSuccessful: true)
         }
 
+        archiveArtifacts(artifacts: 'target/**/*.war', fingerprint: true, onlyIfSuccessful: true)
       }
     }
 

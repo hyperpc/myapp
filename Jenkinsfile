@@ -38,11 +38,10 @@ pipeline {
 
         script {
           withCredentials([
-            usernamePassword(credentialsId: 'JFrogArtifactoryTokenID',
+            usernamePassword(credentialsId: 'JFrogArtifactoryUsernamePwdID',
             usernameVariable: 'username',
             passwordVariable: 'password')
           ]) {
-
             print 'username=' + username + ' password=' + password
 
             //Artifactory Credentials

@@ -29,6 +29,31 @@ pipeline {
         }
 
         archiveArtifacts(artifacts: 'target/*.war', fingerprint: true, onlyIfSuccessful: true)
+        script {
+          def pom = readMavenPom file: 'pom.xml'
+          VERSION = pom.version
+          env.SVERSION = VERSION //Stable version value from pom
+          echo env.SVERSION
+        }
+
+        script {
+          withCredentials([
+            usernamePassword(credentialsId: 'JFrogArtifactoryTokenID',
+            usernameVariable: 'username',
+            passwordVariable: 'password')
+          ]) {
+
+            print 'username=' + username + ' password=' + password
+
+            //Artifactory Credentials
+            env.username = username
+            env.password = password
+
+            //Batch command to Upload artifactory using above credentials
+            bat(script: 'jfrog rt u "target/demo-1.0.war" myapp/samples/%SVERSION%/ --user=%username% --password=%password% --url=http://localhost:8040/artifactory', label: 'Artifactory Upload')
+          }
+        }
+
       }
     }
 

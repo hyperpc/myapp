@@ -13,7 +13,19 @@
 	<version>1.0</version>
 	<name>myapp</name>
 	<packaging>war</packaging>
-	<description>Demo project for Spring Boot</description>
+	<description>Demo project for Spring Boot</description>	
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<name>DEV-5CG12517WQ-releases</name>
+			<url>http://localhost:8040/artifactory/myapp</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>DEV-5CG12517WQ-snapshots</name>
+			<url>http://localhost:8040/artifactory/myapp</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<properties>
 		<java.version>17</java.version>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>

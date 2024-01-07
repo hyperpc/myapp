@@ -28,6 +28,7 @@
 	</distributionManagement>
 	<properties>
 		<java.version>17</java.version>
+		<release.identifier>SNAPSHOT</release.identifier>
 		<maven.build.timestamp.format>yyyy-MM-dd-HH-mm-ss</maven.build.timestamp.format>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
@@ -134,7 +135,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>${project.artifactId}_${maven.build.timestamp.format}_${buildNumber}</finalName>
+		<finalName>${project.artifactId}_${project.version}_${maven.build.timestamp.format}_${buildNumber}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

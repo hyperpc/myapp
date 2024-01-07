@@ -35,7 +35,7 @@
 		<release.identifier>SNAPSHOT</release.identifier>
 		<!-- Timestamp of build  -->
         <timestamp>${maven.build.timestamp}</timestamp>
-        <maven.build.timestamp.format>yyyy_MM_dd_HH_mm_ss</maven.build.timestamp.format>
+        <maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<!-- 
@@ -147,7 +147,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>${project.artifactId}_${project.version}_${timestamp}_${buildNumber}</finalName>
+		<finalName>${project.artifactId}-${project.version}-${timestamp}-${buildNumber}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -155,7 +155,8 @@
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>buildnumber-maven-plugin</artifactId>			
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<version>3.2.0</version>
 				<executions>
 					<execution>
 						<phase>package</phase>

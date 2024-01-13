@@ -33,11 +33,11 @@
 	<properties>
 		<java.version>17</java.version>
 		<release.identifier>SNAPSHOT</release.identifier>
-		<buildNumber>${buildNumber}</buildNumber>
 		<!-- Timestamp of build  -->
         <timestamp>${maven.build.timestamp}</timestamp>
         <!--
 		<maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
+		<buildNumber>${buildNumber}</buildNumber>
 		-->
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
@@ -162,7 +162,8 @@
 				<version>3.2.0</version>
 				<executions>
 					<execution>
-						<phase>package</phase>
+						<id>git-buildnumber</id>
+						<phase>validate</phase>
 						<goals>
 							<goal>create</goal>
 						</goals>

@@ -35,8 +35,8 @@
 		<release.identifier>SNAPSHOT</release.identifier>
 		<!-- Timestamp of build  -->
         <timestamp>${maven.build.timestamp}</timestamp>
-        <!--
 		<maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
+        <!--
 		<buildNumber>${buildNumber}</buildNumber>
 		-->
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>

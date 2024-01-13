@@ -14,7 +14,6 @@ pipeline {
         withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME') {
           bat(script: 'mvn clean', label: 'Clean output path')
           bat(script: 'mvn test', label: 'Test the compiled file')
-          bat(script: 'mvn sonar:sonar install', label: 'Unit testing and Code Coverage')
           cobertura(autoUpdateHealth: true, autoUpdateStability: true, classCoverageTargets: 'target\\cobertura', coberturaReportFile: 'target\\cobertura\\*', failUnstable: true)
         }
 
@@ -42,7 +41,9 @@ pipeline {
             passwordVariable: 'password')
           ]) {
             print 'username=' + username + ' password=' + password
-
+            print 'env.GIT_COMMIT=' + env.GIT_COMMIT
+            print 'env.buildNumber=' + env.buildNumber
+            print 'env.timestamp=' + env.timestamp
             //Artifactory Credentials
             env.username = username
             env.password = password

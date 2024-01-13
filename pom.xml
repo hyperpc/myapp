@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>org.myapp</groupId>
 	<artifactId>demo</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.4</version>
 	<scm>
 		<connection>scm:git:https://github.com/hyperpc/myapp.git</connection>
 		<url>https://github.com/hyperpc/myapp.git</url>
@@ -33,9 +33,12 @@
 	<properties>
 		<java.version>17</java.version>
 		<release.identifier>SNAPSHOT</release.identifier>
+		<buildNumber>${buildNumber}</buildNumber>
 		<!-- Timestamp of build  -->
         <timestamp>${maven.build.timestamp}</timestamp>
-        <maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
+        <!--
+		<maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
+		-->
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<!-- 

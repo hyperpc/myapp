@@ -13,6 +13,7 @@ pipeline {
       steps {
         withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME') {
           bat(script: 'mvn clean', label: 'Clean output path')
+          bat(label: 'Compile source code', script: 'mvn compile')
           bat(script: 'mvn test', label: 'Test the compiled file')
           cobertura(autoUpdateHealth: true, autoUpdateStability: true, classCoverageTargets: 'target\\cobertura', coberturaReportFile: 'target\\cobertura\\*', failUnstable: true)
         }

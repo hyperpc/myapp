@@ -65,7 +65,7 @@ pipeline {
             passwordVariable: 'password')
           ]) {
             //Batch command to Upload artifactory using above credentials
-            bat(script: 'jfrog rt dl myapp/samples/%SVERSION%/ "target/demo-*.war" --user=%username% --password=%password% --url=http://localhost:8040/artifactory', label: 'Artifactory Download')
+            bat(script: 'jfrog rt dl myapp/samples/%SVERSION%/target/demo-*.war" --user=%username% --password=%password% --url=http://localhost:8040/artifactory', label: 'Artifactory Download')
           }
         }
 

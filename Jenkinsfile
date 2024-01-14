@@ -72,5 +72,11 @@ pipeline {
       }
     }
 
+    stage('Deploy to QA?') {
+      steps {
+        input(message: 'Are you sure you want to deploy to QA environment?', id: 'QA', ok: 'QA Deploy', submitter: 'admin', submitterParameter: 'admin')
+      }
+    }
+
   }
 }

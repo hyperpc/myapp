@@ -85,10 +85,7 @@ pipeline {
           println env.RVERSION
         }
 
-        steps() {
-          echo 'QA release...'
-        }
-
+        echo 'QA release...'
         withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME') {
           bat(script: 'mvn release:prepare release:perform -Dmaven.clean.skip=true -Dmaven.test.skip=true -Dmaven.delpoy.skip=true', label: 'Maven Release')
         }

@@ -80,7 +80,7 @@ pipeline {
       steps {
         script {
           def pom = readMavenPom file:'pom.xml'
-          VERSION = pom.version.replaceAll('-SNAPSHOT','')
+          VERSION = pom.version//.replaceAll('-SNAPSHOT','')
           env.RVERSION=VERSION
           println env.RVERSION
         }

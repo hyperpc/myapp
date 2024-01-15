@@ -93,9 +93,9 @@ pipeline {
           bat(script: 'mvn release:prepare release:perform -Dmaven.clean.skip=true -Dmaven.test.skip=true -Dmaven.delpoy.skip=true', label: 'Maven Release')
         }
 
-        echo 'jfrog upload: Release Upload Artifactory'
+        echo 'Msg-jfrog-upload: Release Upload Artifactory'
         bat(script: 'jfrog rt u "QA/target/demo-*.war" myapp/samples/%SVERSION%/ --user=%username% --password=%password% --url=http://localhost:8040/artifactory', label: 'Release Upload Artifactory')
-        echo 'jfrog upload: Release Package Download from Artifactory'
+        echo 'Msg-jfrog-download: Release Package Download from Artifactory'
         bat(script: 'jfrog rt dl myapp/samples/%SVERSION%/QA/target/demo-*.war --user=%username% --password=%password% --url=http://localhost:8040/artifactory', label: 'Release Package Download from Artifactory')
       }
     }

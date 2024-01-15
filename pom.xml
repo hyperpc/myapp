@@ -9,11 +9,11 @@
 	</parent>
 	<groupId>org.myapp</groupId>
 	<artifactId>demo</artifactId>
-	<version>1.0.10-SNAPSHOT</version>
+	<version>1.0.10</version>
 	<scm>
 		<connection>scm:git:https://github.com/hyperpc/myapp.git</connection>
 		<url>https://github.com/hyperpc/myapp.git</url>
-  	  	<tag>HEAD</tag>
+  	  	<tag>1.0.10-SNAPSHOT</tag>
   </scm>
 	<name>myapp</name>
 	<packaging>war</packaging>

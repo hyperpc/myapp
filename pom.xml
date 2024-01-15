@@ -160,8 +160,9 @@
 	<build>
 		<!--
 		<finalName>${project.artifactId}-${project.version}-${timestamp}-${buildNumber}</finalName>
-		-->
 		<finalName>${project.artifactId}-${env.GIT_COMMIT}-v${project.version}</finalName>
+		-->
+		<finalName>${project.artifactId}-${project.version}</finalName>
 
 
 		<plugins>
@@ -174,7 +175,7 @@
 				<artifactId>maven-release-plugin</artifactId>
 				<version>3.0.1</version>
 				<configuration>
-					<tagNameFormat>@{project.version}</tagNameFormat>
+					<tagNameFormat>@{project.version}-SNAPSHOT</tagNameFormat>
 					<preparationGoals>clean verify</preparationGoals>
 					<releaseProfiles>release</releaseProfiles>
 				</configuration>

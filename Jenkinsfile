@@ -85,21 +85,17 @@ pipeline {
           println env.RVERSION
         }
 
-      steps {
-        echo 'QA release...'
-      }
+        steps() {
+          echo 'QA release...'
+        }
+
         withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME') {
           bat(script: 'mvn release:prepare release:perform -Dmaven.clean.skip=true -Dmaven.test.skip=true -Dmaven.delpoy.skip=true', label: 'Maven Release')
         }
 
-      steps {
         echo 'jfrog upload: Release Upload Artifactory'
-      }
         bat(script: 'jfrog rt u "QA/target/demo-*.war" myapp/samples/%SVERSION%/ --user=%username% --password=%password% --url=http://localhost:8040/artifactory', label: 'Release Upload Artifactory')
-        
-      steps {
         echo 'jfrog upload: Release Package Download from Artifactory'
-      }
         bat(script: 'jfrog rt dl myapp/samples/%SVERSION%/QA/target/demo-*.war --user=%username% --password=%password% --url=http://localhost:8040/artifactory', label: 'Release Package Download from Artifactory')
       }
     }

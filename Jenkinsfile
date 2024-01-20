@@ -87,7 +87,7 @@ pipeline {
 
         echo 'QA release msg...'
         withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME') {
-          bat(script: 'mvn release:prepare release:perform -Dmaven.clean.skip=true -Dmaven.test.skip=true -Dmaven.delpoy.skip=true', label: 'Maven Release')
+          bat(script: 'mvn release:prepare release:perform -Dmaven.clean.skip=true -Dmaven.test.skip=true -Dmaven.deploy.skip=true', label: 'Maven Release')
         }
 
         echo 'Msg-jfrog-upload: Release Upload Artifactory'

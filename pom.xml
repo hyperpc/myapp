@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>org.myapp</groupId>
 	<artifactId>demo</artifactId>
-	<version>1.0.11</version>
+	<version>1.0.11-SNAPSHOT</version>
 	<scm>
 		<connection>scm:git:https://github.com/hyperpc/myapp.git</connection>
 		<url>https://github.com/hyperpc/myapp.git</url>
@@ -168,7 +168,7 @@
 		<finalName>${project.artifactId}-${project.version}-${timestamp}-${buildNumber}</finalName>
 		<finalName>${project.artifactId}-${env.GIT_COMMIT}-v${project.version}</finalName>
 		-->
-		<finalName>${project.artifactId}-{env.GIT_COMMIT}-v${project.version}-{release.identifier}</finalName>
+		<finalName>${project.artifactId}-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

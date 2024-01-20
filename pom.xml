@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>org.myapp</groupId>
 	<artifactId>demo</artifactId>
-	<version>1.0.11-SNAPSHOT</version>
+	<version>v1.0.11-SNAPSHOT</version>
 	<scm>
 		<connection>scm:git:https://github.com/hyperpc/myapp.git</connection>
 		<url>https://github.com/hyperpc/myapp.git</url>
@@ -181,7 +181,7 @@
 				<artifactId>maven-release-plugin</artifactId>
 				<version>3.0.1</version>
 				<configuration>
-					<tagNameFormat>@{project.version}-SNAPSHOT</tagNameFormat>
+					<tagNameFormat>@{project.version}</tagNameFormat>
 					<preparationGoals>clean verify</preparationGoals>
 					<releaseProfiles>release</releaseProfiles>
 				</configuration>

@@ -12,7 +12,8 @@
 	<version>1.0.12-SNAPSHOT</version>
 	<scm>
 		<connection>scm:git:https://github.com/hyperpc/myapp.git</connection>
-		<url>https://github.com/hyperpc/myapp.git</url>
+		<url>https://github.com/hyperpc/myapp</url>
+		<developerConnection>scm:git:https://github.com/hyperpc/myapp.git</developerConnection>
   	  	<tag>HEAD</tag>
   </scm>
 	<name>myapp</name>
@@ -21,13 +22,13 @@
 	<distributionManagement>
 		<repository>
 			<id>central</id>
-			<name>DEV-5CG12517WQ-releases</name>
-			<url>http://localhost:8040/artifactory/myapp</url>
+			<name>Releases Repository</name>
+			<url>http://localhost:8082/artifactory/myapp/</url>
 		</repository>
 		<snapshotRepository>
 			<id>snapshots</id>
-			<name>DEV-5CG12517WQ-snapshots</name>
-			<url>http://localhost:8040/artifactory/myapp</url>
+			<name>Snapshot Repository</name>
+			<url>http://localhost:8082/artifactory/myapp/</url>
 		</snapshotRepository>
 	</distributionManagement>
 	<properties>
@@ -180,8 +181,11 @@
 				<version>3.0.1</version>
 				<configuration>
 					<tagNameFormat>@{project.version}</tagNameFormat>
+					<!--
+					-->
 					<preparationGoals>clean verify</preparationGoals>
 					<releaseProfiles>release</releaseProfiles>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
 				</configuration>
 			</plugin>
 			<plugin>
